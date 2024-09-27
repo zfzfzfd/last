@@ -91,8 +91,8 @@ app.get('/', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup'); // ./views/signup.ejs를 불러오기
 });
-app.get('/test3', (req, res) => {
-    res.render('test3'); // ./views/test3.ejs를 불러오기
+app.get('/personal', (req, res) => {
+    res.render('personal'); // ./views/test3.ejs를 불러오기
 });
 
 app.post('/loginProc', (req, res) => {
