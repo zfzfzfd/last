@@ -1,13 +1,15 @@
 const express = require('express');
 const mysql = require('mysql2');
 const session = require('express-session');
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
 const bodyParser = require('body-parser');
 const http = require('http');
 const socketIO = require('socket.io');
 
 const app = express();
 const port = 3000;
-
+const redisClient = redis.createClient();
 const server = http.createServer(app);
 const io = socketIO(server);
 
@@ -48,7 +50,7 @@ app.use(bodyParser.json());
 app.use(session({
     secret: '1234',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 
 app.use(express.static('css')); // 정적 파일 허용
